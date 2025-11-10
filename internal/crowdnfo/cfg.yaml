@@ -1,0 +1,5 @@
+package: crowdnfo
+output: internal/crowdnfo/crowdnfo.gen.go
+generate:
+  models: true
+  client: true
