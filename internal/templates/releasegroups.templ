@@ -1,6 +1,9 @@
 package templates
 
-import "github.com/pixiehollows/crowdnfo-frontend/internal/crowdnfo"
+import (
+	"github.com/pixiehollows/crowdnfo-frontend/internal/crowdnfo"
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/components"
+)
 
 templ ReleaseGroups(items []crowdnfo.ReleaseGroupDto) {
 	<!DOCTYPE html>
@@ -12,9 +15,12 @@ templ ReleaseGroups(items []crowdnfo.ReleaseGroupDto) {
 			<title>Document</title>
 		</head>
 		<body class="w-full h-full min-h-svh">
-			for _, item := range items {
-				<li>{ item.Name }</li>
-			}
+			@components.Navbar(components.NavbarProps{Title: "crowdNFO"})
+			<div class="grid grid-cols-4 gap-4">
+				for _, item := range items {
+					@components.Card(components.CardProps{Title: item.Name})
+				}
+			</div>
 		</body>
 	</html>
 }
