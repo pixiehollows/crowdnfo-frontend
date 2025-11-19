@@ -1,0 +1,28 @@
+package components
+
+type HeroProps struct {
+	Title          string
+	Button         bool
+	ButtonSettings ButtonSettings
+}
+
+type ButtonSettings struct {
+	Text string
+	Link string
+}
+
+templ Hero(props HeroProps) {
+	<div class="hero bg-base-200">
+		<div class={ "hero-content text-center min-h-96" }>
+			<div class="min-w-48">
+				<h1 class="text-4xl font-bold">{ props.Title }</h1>
+				<p class="py-6">
+					{ children... }
+				</p>
+				if props.Button && props.ButtonSettings.Text != "" {
+					<button class="btn btn-primary">{ props.ButtonSettings.Text }</button>
+				}
+			</div>
+		</div>
+	</div>
+}

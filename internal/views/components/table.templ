@@ -1,0 +1,34 @@
+package components
+
+templ Table(headers []templ.Component, rows templ.Component, attrs templ.Attributes) {
+	<div class="overflow-x-auto">
+		<table { attrs... } class="table table-fixed">
+			<thead>
+				<tr>
+					for _, header := range headers {
+						<th>
+							@header
+						</th>
+					}
+				</tr>
+			</thead>
+			<tbody>
+				@rows
+			</tbody>
+		</table>
+	</div>
+}
+
+templ TableRow(row []templ.Component) {
+	<tr>
+		for _, column := range row {
+			@column
+		}
+	</tr>
+}
+
+// Component to use as plain text when
+// templ.Component is used as argument
+templ PlainText(content string) {
+	{ content }
+}

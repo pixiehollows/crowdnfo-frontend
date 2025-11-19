@@ -1,0 +1,15 @@
+package templates
+
+import (
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/components"
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/snippets"
+)
+
+templ Index() {
+	@snippets.DocRoot() {
+		@components.Navbar(components.NavbarProps{Title: "crowdNFO"})
+		@components.Hero(components.HeroProps{Title: "Welcome to crowdNFO", Button: true, ButtonSettings: components.ButtonSettings{Text: "Go to Releases"}}) {
+			Crowdsourced NFO files and MediaInfo data for scene and P2P releases
+		}
+	}
+}

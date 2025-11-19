@@ -1,0 +1,41 @@
+package templates
+
+import (
+	"github.com/pixiehollows/crowdnfo-frontend/internal/crowdnfo"
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/components"
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/snippets"
+)
+
+templ Releases(releases []crowdnfo.ReleaseDto) {
+	@snippets.DocRoot() {
+		@components.Navbar(components.NavbarProps{Title: "crowdNFO"})
+		@components.Hero(components.HeroProps{Title: "Releases"}) {
+			// TODO
+		}
+		@components.Table(
+			[]templ.Component{
+				components.PlainText("Name"),
+				components.PlainText("Creator"),
+				components.PlainText("Created"),
+			},
+			ReleasesRows(releases),
+			nil,
+		)
+	}
+}
+
+templ ReleasesRows(releases []crowdnfo.ReleaseDto) {
+	for _, item := range releases {
+		<tr>
+			<td>
+				@components.PlainText(*item.CanonicalName)
+			</td>
+			<td>
+				@components.PlainText(*item.CreatorUsername)
+			</td>
+			<td>
+				@components.PlainText(item.CreatedAt.String())
+			</td>
+		</tr>
+	}
+}

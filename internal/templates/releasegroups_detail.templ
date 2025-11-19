@@ -1,0 +1,12 @@
+package templates
+
+import (
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/components"
+	"github.com/pixiehollows/crowdnfo-frontend/internal/views/snippets"
+)
+
+templ ReleaseGroupsDetail() {
+	@snippets.DocRoot() {
+		@components.Navbar(components.NavbarProps{Title: "crowdNFO"})
+	}
+}
